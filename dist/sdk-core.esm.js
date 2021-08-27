@@ -567,6 +567,13 @@ var Token = /*#__PURE__*/function (_BaseCurrency) {
   return Token;
 }(BaseCurrency);
 
+var _WETH;
+/**
+ * Known WETH9 implementation addresses, used in our implementation of Ether#wrapped
+ */
+
+var WETH9 = (_WETH = {}, _WETH[1] = /*#__PURE__*/new Token(1, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, 'WETH', 'Wrapped Ether'), _WETH[3] = /*#__PURE__*/new Token(3, '0xc778417E063141139Fce010982780140Aa0cD5Ab', 18, 'WETH', 'Wrapped Ether'), _WETH[4] = /*#__PURE__*/new Token(4, '0xc778417E063141139Fce010982780140Aa0cD5Ab', 18, 'WETH', 'Wrapped Ether'), _WETH[5] = /*#__PURE__*/new Token(5, '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6', 18, 'WETH', 'Wrapped Ether'), _WETH[42] = /*#__PURE__*/new Token(42, '0xd0A1E359811322d97991E03f863a0C30C2cF029C', 18, 'WETH', 'Wrapped Ether'), _WETH[10] = /*#__PURE__*/new Token(10, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapped Ether'), _WETH[69] = /*#__PURE__*/new Token(69, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapped Ether'), _WETH[42161] = /*#__PURE__*/new Token(42161, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 18, 'WETH', 'Wrapped Ether'), _WETH[421611] = /*#__PURE__*/new Token(421611, '0xB47e6A5f8b33b3F17603C83a0535A9dcD7E32681', 18, 'WETH', 'Wrapped Ether'), _WETH);
+
 /**
  * Ether is the main usage of a 'native' currency, i.e. for Ethereum mainnet and all testnets
  */
@@ -574,16 +581,14 @@ var Token = /*#__PURE__*/function (_BaseCurrency) {
 var Ether = /*#__PURE__*/function (_NativeCurrency) {
   _inheritsLoose(Ether, _NativeCurrency);
 
-  function Ether(chainId, address) {
-    var _this;
-
-    _this = _NativeCurrency.call(this, chainId, 18, 'ETH', 'Ether') || this;
-    _this._wrappedEtherAddress = address;
-    return _this;
+  function Ether(chainId) {
+    return _NativeCurrency.call(this, chainId, 18, 'ETH', 'Ether') || this;
   }
 
-  Ether.onChain = function onChain(chainId, address) {
-    return new Ether(chainId, address);
+  Ether.onChain = function onChain(chainId) {
+    var _this$_etherCache$cha;
+
+    return (_this$_etherCache$cha = this._etherCache[chainId]) != null ? _this$_etherCache$cha : this._etherCache[chainId] = new Ether(chainId);
   };
 
   var _proto = Ether.prototype;
@@ -595,17 +600,15 @@ var Ether = /*#__PURE__*/function (_NativeCurrency) {
   _createClass(Ether, [{
     key: "wrapped",
     get: function get() {
-      if (this._wrappedEther) {
-        return this._wrappedEther;
-      }
-
-      this._wrappedEther = new Token(this.chainId, this._wrappedEtherAddress, 18, 'WETH', 'Wrapped Ether');
-      return this._wrappedEther;
+      var weth9 = WETH9[this.chainId];
+      !!!weth9 ? process.env.NODE_ENV !== "production" ? invariant(false, 'WRAPPED') : invariant(false) : void 0;
+      return weth9;
     }
   }]);
 
   return Ether;
 }(NativeCurrency);
+Ether._etherCache = {};
 
 /**
  * Returns the percent difference between the mid price and the execution price, i.e. price impact.
@@ -685,5 +688,5 @@ function sqrt(value) {
   return z;
 }
 
-export { CurrencyAmount, Ether, Fraction, MaxUint256, NativeCurrency, Percent, Price, Rounding, Token, TradeType, computePriceImpact, sortedInsert, sqrt, validateAndParseAddress };
+export { CurrencyAmount, Ether, Fraction, MaxUint256, NativeCurrency, Percent, Price, Rounding, Token, TradeType, WETH9, computePriceImpact, sortedInsert, sqrt, validateAndParseAddress };
 //# sourceMappingURL=sdk-core.esm.js.map
