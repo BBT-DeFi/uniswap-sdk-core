@@ -577,7 +577,7 @@ var Ether = /*#__PURE__*/function (_NativeCurrency) {
   function Ether(chainId, address) {
     var _this;
 
-    _this = _NativeCurrency.call(this, chainId, 18, 'KUB', 'KUB') || this;
+    _this = _NativeCurrency.call(this, chainId, 18, 'ETH', 'Ether') || this;
     _this._wrappedEtherAddress = address;
     return _this;
   }

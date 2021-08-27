@@ -10,7 +10,7 @@ export class Ether extends NativeCurrency {
   private _wrappedEther: Token | undefined
 
   protected constructor(chainId: number, address: string) {
-    super(chainId, 18, 'KUB', 'KUB')
+    super(chainId, 18, 'ETH', 'Ether')
     this._wrappedEtherAddress = address
   }
 
