@@ -155,13 +155,8 @@ var Fraction = /*#__PURE__*/function () {
     Big.RM = toFixedRounding[rounding];
     return new Big(this.numerator.toString()).div(this.denominator.toString()).toFormat(decimalPlaces, format);
   }
-<<<<<<< HEAD
   /**
    * Helper method for converting any super class back to a fraction
-=======
-  /**
-   * Helper method for converting any super class back to a fraction
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
    */
   ;
 
@@ -199,36 +194,21 @@ var CurrencyAmount = /*#__PURE__*/function (_Fraction) {
     _this.decimalScale = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(currency.decimals));
     return _this;
   }
-<<<<<<< HEAD
   /**
    * Returns a new currency amount instance from the unitless amount of token, i.e. the raw amount
    * @param currency the currency in the amount
    * @param rawAmount the raw token or ether amount
-=======
-  /**
-   * Returns a new currency amount instance from the unitless amount of token, i.e. the raw amount
-   * @param currency the currency in the amount
-   * @param rawAmount the raw token or ether amount
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
    */
 
 
   CurrencyAmount.fromRawAmount = function fromRawAmount(currency, rawAmount) {
     return new CurrencyAmount(currency, rawAmount);
   }
-<<<<<<< HEAD
   /**
    * Construct a currency amount with a denominator that is not equal to 1
    * @param currency the currency
    * @param numerator the numerator of the fractional token amount
    * @param denominator the denominator of the fractional token amount
-=======
-  /**
-   * Construct a currency amount with a denominator that is not equal to 1
-   * @param currency the currency
-   * @param numerator the numerator of the fractional token amount
-   * @param denominator the denominator of the fractional token amount
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
    */
   ;
 
@@ -314,15 +294,9 @@ var CurrencyAmount = /*#__PURE__*/function (_Fraction) {
 }(Fraction);
 
 var ONE_HUNDRED = /*#__PURE__*/new Fraction( /*#__PURE__*/JSBI.BigInt(100));
-<<<<<<< HEAD
 /**
  * Converts a fraction to a percent
  * @param fraction the fraction to convert
-=======
-/**
- * Converts a fraction to a percent
- * @param fraction the fraction to convert
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
  */
 
 function toPercent(fraction) {
@@ -336,13 +310,8 @@ var Percent = /*#__PURE__*/function (_Fraction) {
     var _this;
 
     _this = _Fraction.apply(this, arguments) || this;
-<<<<<<< HEAD
     /**
      * This boolean prevents a fraction from being interpreted as a Percent
-=======
-    /**
-     * This boolean prevents a fraction from being interpreted as a Percent
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
      */
 
     _this.isPercent = true;
@@ -389,15 +358,9 @@ var Percent = /*#__PURE__*/function (_Fraction) {
 var Price = /*#__PURE__*/function (_Fraction) {
   _inheritsLoose(Price, _Fraction);
 
-<<<<<<< HEAD
   /**
    * Construct a price, either with the base and quote currency amount, or the
    * @param args
-=======
-  /**
-   * Construct a price, either with the base and quote currency amount, or the
-   * @param args
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
    */
   function Price() {
     var _this;
@@ -428,13 +391,8 @@ var Price = /*#__PURE__*/function (_Fraction) {
     _this.scalar = new Fraction(JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(baseCurrency.decimals)), JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(quoteCurrency.decimals)));
     return _this;
   }
-<<<<<<< HEAD
   /**
    * Flip the price, switching the base and quote currency
-=======
-  /**
-   * Flip the price, switching the base and quote currency
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
    */
 
 
@@ -443,15 +401,9 @@ var Price = /*#__PURE__*/function (_Fraction) {
   _proto.invert = function invert() {
     return new Price(this.quoteCurrency, this.baseCurrency, this.numerator, this.denominator);
   }
-<<<<<<< HEAD
   /**
    * Multiply the price by another price, returning a new price. The other price must have the same base currency as this price's quote currency
    * @param other the other price
-=======
-  /**
-   * Multiply the price by another price, returning a new price. The other price must have the same base currency as this price's quote currency
-   * @param other the other price
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
    */
   ;
 
@@ -462,15 +414,9 @@ var Price = /*#__PURE__*/function (_Fraction) {
 
     return new Price(this.baseCurrency, other.quoteCurrency, fraction.denominator, fraction.numerator);
   }
-<<<<<<< HEAD
   /**
    * Return the amount of quote currency corresponding to a given amount of the base currency
    * @param currencyAmount the amount of base currency to quote against the price
-=======
-  /**
-   * Return the amount of quote currency corresponding to a given amount of the base currency
-   * @param currencyAmount the amount of base currency to quote against the price
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
    */
   ;
 
@@ -481,15 +427,9 @@ var Price = /*#__PURE__*/function (_Fraction) {
 
     return CurrencyAmount.fromFractionalAmount(this.quoteCurrency, result.numerator, result.denominator);
   }
-<<<<<<< HEAD
   /**
    * Get the value scaled by decimals for formatting
    * @private
-=======
-  /**
-   * Get the value scaled by decimals for formatting
-   * @private
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
    */
   ;
 
@@ -519,7 +459,6 @@ var Price = /*#__PURE__*/function (_Fraction) {
   return Price;
 }(Fraction);
 
-<<<<<<< HEAD
 /**
  * A currency is any fungible financial instrument, including Ether, all ERC20 tokens, and other chain-native currencies
  */
@@ -531,19 +470,6 @@ var BaseCurrency =
  * @param decimals decimals of the currency
  * @param symbol symbol of the currency
  * @param name of the currency
-=======
-/**
- * A currency is any fungible financial instrument, including Ether, all ERC20 tokens, and other chain-native currencies
- */
-
-var BaseCurrency =
-/**
- * Constructs an instance of the base class `BaseCurrency`.
- * @param chainId the chain ID on which this currency resides
- * @param decimals decimals of the currency
- * @param symbol symbol of the currency
- * @param name of the currency
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
  */
 function BaseCurrency(chainId, decimals, symbol, name) {
   !Number.isSafeInteger(chainId) ? process.env.NODE_ENV !== "production" ? invariant(false, 'CHAIN_ID') : invariant(false) : void 0;
@@ -554,13 +480,8 @@ function BaseCurrency(chainId, decimals, symbol, name) {
   this.name = name;
 };
 
-<<<<<<< HEAD
 /**
  * Represents the native currency of the chain on which it resides, e.g.
-=======
-/**
- * Represents the native currency of the chain on which it resides, e.g.
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
  */
 
 var NativeCurrency = /*#__PURE__*/function (_BaseCurrency) {
@@ -578,15 +499,9 @@ var NativeCurrency = /*#__PURE__*/function (_BaseCurrency) {
   return NativeCurrency;
 }(BaseCurrency);
 
-<<<<<<< HEAD
 /**
  * Validates an address and returns the parsed (checksummed) version of that address
  * @param address the unchecksummed hex address
-=======
-/**
- * Validates an address and returns the parsed (checksummed) version of that address
- * @param address the unchecksummed hex address
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
  */
 
 function validateAndParseAddress(address) {
@@ -597,13 +512,8 @@ function validateAndParseAddress(address) {
   }
 }
 
-<<<<<<< HEAD
 /**
  * Represents an ERC20 token with a unique address and some metadata.
-=======
-/**
- * Represents an ERC20 token with a unique address and some metadata.
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
  */
 
 var Token = /*#__PURE__*/function (_BaseCurrency) {
@@ -618,15 +528,9 @@ var Token = /*#__PURE__*/function (_BaseCurrency) {
     _this.address = validateAndParseAddress(address);
     return _this;
   }
-<<<<<<< HEAD
   /**
    * Returns true if the two tokens are equivalent, i.e. have the same chainId and address.
    * @param other other token to compare
-=======
-  /**
-   * Returns true if the two tokens are equivalent, i.e. have the same chainId and address.
-   * @param other other token to compare
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
    */
 
 
@@ -635,19 +539,11 @@ var Token = /*#__PURE__*/function (_BaseCurrency) {
   _proto.equals = function equals(other) {
     return other.isToken && this.chainId === other.chainId && this.address === other.address;
   }
-<<<<<<< HEAD
   /**
    * Returns true if the address of this token sorts before the address of the other token
    * @param other other token to compare
    * @throws if the tokens have the same address
    * @throws if the tokens are on different chains
-=======
-  /**
-   * Returns true if the address of this token sorts before the address of the other token
-   * @param other other token to compare
-   * @throws if the tokens have the same address
-   * @throws if the tokens are on different chains
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
    */
   ;
 
@@ -656,13 +552,8 @@ var Token = /*#__PURE__*/function (_BaseCurrency) {
     !(this.address !== other.address) ? process.env.NODE_ENV !== "production" ? invariant(false, 'ADDRESSES') : invariant(false) : void 0;
     return this.address.toLowerCase() < other.address.toLowerCase();
   }
-<<<<<<< HEAD
   /**
    * Return this token, which does not need to be wrapped
-=======
-  /**
-   * Return this token, which does not need to be wrapped
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
    */
   ;
 
@@ -676,13 +567,8 @@ var Token = /*#__PURE__*/function (_BaseCurrency) {
   return Token;
 }(BaseCurrency);
 
-<<<<<<< HEAD
 /**
  * Ether is the main usage of a 'native' currency, i.e. for Ethereum mainnet and all testnets
-=======
-/**
- * Ether is the main usage of a 'native' currency, i.e. for Ethereum mainnet and all testnets
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
  */
 
 var Ether = /*#__PURE__*/function (_NativeCurrency) {
@@ -721,19 +607,11 @@ var Ether = /*#__PURE__*/function (_NativeCurrency) {
   return Ether;
 }(NativeCurrency);
 
-<<<<<<< HEAD
 /**
  * Returns the percent difference between the mid price and the execution price, i.e. price impact.
  * @param midPrice mid price before the trade
  * @param inputAmount the input amount of the trade
  * @param outputAmount the output amount of the trade
-=======
-/**
- * Returns the percent difference between the mid price and the execution price, i.e. price impact.
- * @param midPrice mid price before the trade
- * @param inputAmount the input amount of the trade
- * @param outputAmount the output amount of the trade
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
  */
 
 function computePriceImpact(midPrice, inputAmount, outputAmount) {
@@ -782,15 +660,9 @@ var MAX_SAFE_INTEGER = /*#__PURE__*/JSBI.BigInt(Number.MAX_SAFE_INTEGER);
 var ZERO = /*#__PURE__*/JSBI.BigInt(0);
 var ONE = /*#__PURE__*/JSBI.BigInt(1);
 var TWO = /*#__PURE__*/JSBI.BigInt(2);
-<<<<<<< HEAD
 /**
  * Computes floor(sqrt(value))
  * @param value the value for which to compute the square root, rounded down
-=======
-/**
- * Computes floor(sqrt(value))
- * @param value the value for which to compute the square root, rounded down
->>>>>>> eadf607709132c7b982cedef45f16a1b57833f3d
  */
 
 function sqrt(value) {
